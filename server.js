@@ -20,7 +20,7 @@ app.get('/api/notes', (req, res) =>
 app.post('/api/notes', (req, res) =>{ 
   const db = JSON.parse(fs.readFileSync('./db/db.json'));
   const addToDb = req.body;
-  addToDb.id = uuid();
+  addToDb.id = randomUUID();
   db.push(addToDb);
   fs.writeFileSync('./db/db.json', JSON.stringify(db));
   res.json(db);
